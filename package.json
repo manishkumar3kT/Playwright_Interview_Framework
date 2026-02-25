@@ -1,0 +1,27 @@
+{
+  "name": "playwright_interview",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:master": "Playwright test --grep @master",
+    "test:regression": "Playwright test --grep @regression",
+    "test:sanity": "Playwright test --grep @sanity",
+    "test:datadriven": "Playwright test --grep @datadriven",
+    "test:master:headed": "Playwright test --grep @master --headed",
+    "test:sanity:headed": "Playwright test --grep @sanity --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.3",
+    "allure-playwright": "^3.4.5"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "csv-parse": "^6.1.0",
+    "xlsx": "^0.18.5"
+  }
+}
