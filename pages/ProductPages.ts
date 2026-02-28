@@ -1,5 +1,5 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { ShoppingCartPage } from './ShoppingCartPage'; // Import ShoppingCartPage if needed
+import { ShoppingCartPage } from './ShoppingCartPages'; // Import ShoppingCartPage if needed
 
 export class ProductPage {
     private readonly page: Page;
