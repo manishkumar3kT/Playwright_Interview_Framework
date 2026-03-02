@@ -1,3 +1,8 @@
+import { test, expect } from '@playwright/test';
+import { HomePage } from '../pages/HomePage';
+import { SearchResultsPage } from '../pages/SearchResultsPage';
+import { ProductPage } from '../pages/ProductPages';
+import { TestConfig } from '../test.config';
 /*
 Verify user can add product to cart with default quantity (1)
 Test Steps
@@ -13,12 +18,6 @@ Success message should display
 Product should appear in cart
 Quantity should be 1
 */
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
-import { SearchResultsPage } from '../pages/SearchResultsPage';
-import { ProductPage } from '../pages/ProductPages';
-import { TestConfig } from '../test.config';
-
 test('TC_CART_001 - Add product with default quantity', async ({ page }) => {
 
     const config = new TestConfig();
@@ -154,33 +153,22 @@ test('TC_CART_005 - Add multiple products to cart', async ({ page }) => {
 
     const config = new TestConfig();
     await page.goto(config.appUrl);
-    await page.waitForTimeout(2000);
 
     const homePage = new HomePage(page);
 
     // Add MacBook
     await homePage.enterProductNameInSearchBox("MacBook");
     await homePage.clickSearchButton();
-    await page.waitForTimeout(2000);
-
     let searchPage = new SearchResultsPage(page);
     let productPage = await searchPage.selectProduct("MacBook");
-    await page.waitForTimeout(2000);
-
     await productPage?.addProductToCart("1");
-    await page.waitForTimeout(2000);
 
     // Add iMac
     await homePage.enterProductNameInSearchBox("iMac");
     await homePage.clickSearchButton();
-    await page.waitForTimeout(2000);
-
     searchPage = new SearchResultsPage(page);
     productPage = await searchPage.selectProduct("iMac");
-    await page.waitForTimeout(2000);
-
     await productPage?.addProductToCart("1");
-    await page.waitForTimeout(2000);
 
     await expect(await productPage?.isConfirmationMessageVisible()).toBeTruthy();
 });
